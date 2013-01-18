@@ -3,11 +3,11 @@ from flask import request
 import json
 
 def process(r):
-	result = r.form["code"]
+	out = r.form["code"]
+	err = ""
 	time = 100
-	out={"time":time,"result":result}
-	
-	return out
+	result={"time":time,"out":result}
+	return result
 
 
 app = Flask(__name__)

@@ -6,7 +6,7 @@ def process(r):
 	out = r.form["code"]
 	err = ""
 	time = 100
-	result={"time":time,"out":result}
+	result={"time":time,"out":out,"err":err}
 	return result
 
 

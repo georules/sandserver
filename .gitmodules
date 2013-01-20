@@ -1,0 +1,3 @@
+[submodule "straitjacket"]
+	path=straitjacket
+	url=git://github.com/georules/straitjacket.git

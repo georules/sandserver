@@ -8,8 +8,8 @@ sjconfig = os.path.join(os.path.realpath(os.path.dirname(__file__)),"straitjacke
 print sjconfig
 sj = straitjacket.StraitJacket(sjconfig, False)
 
-def process(code):
-	stdout,stderr,exitstatus,runtime,error = sj.run("python",code, "", None)
+def process(code,inp):
+	stdout,stderr,exitstatus,runtime,error = sj.run("python",code, inp, None)
 	result = json.dumps({"stdout":stdout,"stderr":stderr,"exitstatus":exitstatus,"time":runtime,"error":error})
 	return result
 
@@ -25,9 +25,10 @@ def post_response():
 	code = ""
 	if request.headers['Content-Type'] == 'application/json':
 		code = request.json['code']
+		inp = request.json['input']
 	else:
 		code = request.form['code']
-	out = process(code)
+	out = process(code,inp)
 	return out
 
 #@app.after_request
